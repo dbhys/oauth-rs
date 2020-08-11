@@ -1,0 +1,8 @@
+dbhys:
+  oauth:
+    issuer: http://oauth.dbhys.local:5556
+    connect_timeout: 500
+    read_timeout: 500
+
+logging.level:
+  com.dbhys.oauth: debug
