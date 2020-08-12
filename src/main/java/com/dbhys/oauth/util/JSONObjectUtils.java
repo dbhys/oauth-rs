@@ -88,6 +88,7 @@ public final class JSONObjectUtils {
     /**
      * Gets a generic member of a JSON object.
      *
+     * @param <T>   class type
      * @param o     The JSON object. Must not be {@code null}.
      * @param key   The JSON object member key. Must not be {@code null}.
      * @param clazz The expected class of the JSON object member value. Must
@@ -407,6 +408,7 @@ public final class JSONObjectUtils {
     /**
      * Gets a string member of a JSON object as an enumerated object.
      *
+     * @param <T>       Enum type.
      * @param o         The JSON object. Must not be {@code null}.
      * @param key       The JSON object member key. Must not be
      *                  {@code null}.
@@ -437,6 +439,7 @@ public final class JSONObjectUtils {
     /**
      * Gets a string member of a JSON object as an enumerated object.
      *
+     * @param <T>       Enum type.
      * @param o         The JSON object. Must not be {@code null}.
      * @param key       The JSON object member key. Must not be
      *                  {@code null}.

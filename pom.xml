@@ -137,6 +137,13 @@
     <profiles>
         <profile>
             <id>release</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <gpg.executable>gpg</gpg.executable>
+                <gpg.passphrase>xxxxxxx</gpg.passphrase>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -159,6 +166,10 @@
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
+                                <configuration>
+                                    <additionalJOption>-Xdoclint:none</additionalJOption>
+                                    <failOnError>false</failOnError>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>

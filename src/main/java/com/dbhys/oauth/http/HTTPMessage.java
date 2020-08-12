@@ -146,7 +146,8 @@ abstract class HTTPMessage {
 	}
 	/**
 	 * Gets the first value for the specified key.
-	 *
+	 * @param <K> key.
+	 * @param <V> value.
 	 * @param map The multi-valued map. Must not be {@code null}.
 	 * @param key The key. Must not be {@code null}.
 	 *

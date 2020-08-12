@@ -392,14 +392,14 @@ public enum HttpStatus {
 
 
     /**
-     * Return the integer value of this status code.
+     * @return Return the integer value of this status code.
      */
     public int value() {
         return this.value;
     }
 
     /**
-     * Return the reason phrase of this status code.
+     * @return Return the reason phrase of this status code.
      */
     public String getReasonPhrase() {
         return this.reasonPhrase;
@@ -408,6 +408,7 @@ public enum HttpStatus {
     /**
      * Whether this status code is in the HTTP series
      * This is a shortcut for checking the value of {@link #series()}.
+     * @return is INFORMATIONAL
      */
     public boolean is1xxInformational() {
         return Series.INFORMATIONAL.equals(series());
@@ -416,6 +417,7 @@ public enum HttpStatus {
     /**
      * Whether this status code is in the HTTP series
      * This is a shortcut for checking the value of {@link #series()}.
+     * @return is SUCCESSFUL
      */
     public boolean is2xxSuccessful() {
         return Series.SUCCESSFUL.equals(series());
@@ -424,6 +426,7 @@ public enum HttpStatus {
     /**
      * Whether this status code is in the HTTP series
      * This is a shortcut for checking the value of {@link #series()}.
+     * @return is REDIRECTION
      */
     public boolean is3xxRedirection() {
         return Series.REDIRECTION.equals(series());
@@ -433,6 +436,7 @@ public enum HttpStatus {
     /**
      * Whether this status code is in the HTTP series
      * This is a shortcut for checking the value of {@link #series()}.
+     * @return is CLIENT_ERROR
      */
     public boolean is4xxClientError() {
         return Series.CLIENT_ERROR.equals(series());
@@ -441,13 +445,14 @@ public enum HttpStatus {
     /**
      * Whether this status code is in the HTTP series
      * This is a shortcut for checking the value of {@link #series()}.
+     * @return is SERVER_ERROR
      */
     public boolean is5xxServerError() {
         return Series.SERVER_ERROR.equals(series());
     }
 
     /**
-     * Returns the HTTP status series of this status code.
+     * @return Returns the HTTP status series of this status code.
      * @see HttpStatus.Series
      */
     public Series series() {
@@ -498,7 +503,7 @@ public enum HttpStatus {
         }
 
         /**
-         * Return the integer value of this status series. Ranges from 1 to 5.
+         * @return Return the integer value of this status series. Ranges from 1 to 5.
          */
         public int value() {
             return this.value;
