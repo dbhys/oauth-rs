@@ -63,7 +63,11 @@ public class ApiSecurityInterceptor implements ApplicationContextAware, HandlerI
         try {
             AuthenticationTokenValidator validator = applicationContext.getBean(AuthenticationTokenValidator.class);
             JWTClaimsSet jwtClaimsSet = validator.validate(SignedJWT.parse(token));
-            AuthenticationHelper.setAuthentication(new Authentication(jwtClaimsSet.getSubject()));
+            Authentication authentication = new Authentication(jwtClaimsSet.getSubject());
+            authentication.setName(jwtClaimsSet.getStringClaim("name"));
+            authentication.setIssuerAt(jwtClaimsSet.getIssueTime());
+            authentication.setExpireAt(jwtClaimsSet.getExpirationTime());
+            AuthenticationHelper.setAuthentication(authentication);
             return true;
         } catch (Exception e) {
             logger.error("Invalid token: " + authenticationHeader);
@@ -122,7 +126,7 @@ public class ApiSecurityInterceptor implements ApplicationContextAware, HandlerI
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-
+        AuthenticationHelper.setAuthentication(null);
     }
 
     private String toJson(String error, String errorDescription) {

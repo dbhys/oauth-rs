@@ -17,7 +17,7 @@ public class AuthenticationHelper {
 
     public static Authentication getAuthentication(){
         Authentication authentication = threadLocal.get();
-        logger.debug("Identity id : {}", authentication.getIdentityId());
+        logger.debug("username: {}", authentication.getUsername());
         return threadLocal.get();
     }
 }
