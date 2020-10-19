@@ -8,13 +8,13 @@ import com.dbhys.oauth.http.MediaType;
 import com.dbhys.oauth.util.CookieUtil;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import com.dbhys.oauth.http.HttpStatus;
 import com.dbhys.oauth.validator.AuthenticationTokenValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -32,7 +32,7 @@ import java.io.IOException;
 public class ApiSecurityInterceptor implements ApplicationContextAware, HandlerInterceptor {
     private final static Logger logger = LoggerFactory.getLogger(ApiSecurityInterceptor.class.toString());
 
-    private static String AUTHENTICATION_HEADER = "Authentication";
+    private static String AUTHORIZATION_HEADER = "Authorization";
     private static String BEARER = "BEARER ";
 
     private ApplicationContext applicationContext;
@@ -43,7 +43,7 @@ public class ApiSecurityInterceptor implements ApplicationContextAware, HandlerI
             return true;
         }
 
-        final String authenticationHeader = request.getHeader(AUTHENTICATION_HEADER);
+        final String authenticationHeader = request.getHeader(AUTHORIZATION_HEADER);
         String token = null;
         if (authenticationHeader != null && authenticationHeader.toUpperCase().startsWith(BEARER)) {
             token = authenticationHeader.substring(7);

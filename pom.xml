@@ -4,7 +4,7 @@
 
     <groupId>com.dbhys</groupId>
     <artifactId>oauth-rs</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>oauth-rs</name>
@@ -142,7 +142,7 @@
             </activation>
             <properties>
                 <gpg.executable>gpg</gpg.executable>
-                <gpg.passphrase>xxxxxxx</gpg.passphrase>
+                <gpg.passphrase>Sunrise_8888</gpg.passphrase>
             </properties>
             <build>
                 <plugins>
