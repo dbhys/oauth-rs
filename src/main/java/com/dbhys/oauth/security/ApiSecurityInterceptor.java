@@ -48,11 +48,13 @@ public class ApiSecurityInterceptor implements ApplicationContextAware, HandlerI
         if (authenticationHeader != null && authenticationHeader.toUpperCase().startsWith(BEARER)) {
             token = authenticationHeader.substring(7);
         }
-        AuthenticationResourceServerConfig config = applicationContext.getBean(AuthenticationResourceServerConfig.class);
-        if (config.isEnableCookieToken()) {
-            Cookie oauthCookie = CookieUtil.getCookieByName(request, config.getCookieNameOfToken());
-            if (oauthCookie != null && !StringUtils.isEmpty(oauthCookie.getValue())) {
-                token = oauthCookie.getValue();
+        if (token == null) {
+            AuthenticationResourceServerConfig config = applicationContext.getBean(AuthenticationResourceServerConfig.class);
+            if (config != null && config.isEnableCookieToken()) {
+                Cookie oauthCookie = CookieUtil.getCookieByName(request, config.getCookieNameOfToken());
+                if (oauthCookie != null && !StringUtils.isEmpty(oauthCookie.getValue())) {
+                    token = oauthCookie.getValue();
+                }
             }
         }
         if (token == null){
@@ -83,7 +85,8 @@ public class ApiSecurityInterceptor implements ApplicationContextAware, HandlerI
     }
 
     protected void authErrorHandler(HttpServletRequest request, HttpServletResponse response, String error, String errorDescription) throws IOException {
-        if(isAjax(request)) {
+        AuthenticationResourceServerConfig config = applicationContext.getBean(AuthenticationResourceServerConfig.class);
+        if(isAjax(request) || (config != null && config.isEnableCookieToken())) {
             responseError(request, response, error, errorDescription);
         } else {
             OAuthClientMetadata oAuthClientMetadata = applicationContext.getBean(OAuthClientMetadata.class);
