@@ -85,14 +85,12 @@ public class ApiSecurityInterceptor implements ApplicationContextAware, HandlerI
     }
 
     protected void authErrorHandler(HttpServletRequest request, HttpServletResponse response, String error, String errorDescription) throws IOException {
-        AuthenticationResourceServerConfig config = applicationContext.getBean(AuthenticationResourceServerConfig.class);
-        if(isAjax(request) || (config != null && config.isEnableCookieToken())) {
+        if(isAjax(request)) {
             responseError(request, response, error, errorDescription);
         } else {
             OAuthClientMetadata oAuthClientMetadata = applicationContext.getBean(OAuthClientMetadata.class);
             String redirectUrl = request.getRequestURL().toString();
             response.sendRedirect(oAuthClientMetadata.getAuthorizationUri() + "?redirect_uri=" + redirectUrl);
-            return;
         }
     }
 
