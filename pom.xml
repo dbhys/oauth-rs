@@ -18,8 +18,8 @@
         <connection>scm:git:git://github.com/dbhys/oauth-rs.git</connection>
         <developerConnection>scm:git:https://github.com/dbhys/oauth-rs.git</developerConnection>
         <url>https://github.com/dbhys/oauth-rs.git</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <licenses>
         <license>
