@@ -4,7 +4,7 @@
 
     <groupId>com.dbhys</groupId>
     <artifactId>oauth-rs</artifactId>
-    <version>1.0.4</version>
+    <version>3.0.1</version>
     <packaging>jar</packaging>
 
     <name>oauth-rs</name>
@@ -40,8 +40,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring.boot.version>2.1.3.RELEASE</spring.boot.version>
+        <java.version>17</java.version>
+        <spring.boot.version>3.2.3</spring.boot.version>
     </properties>
 
     <dependencyManagement>
@@ -88,7 +88,7 @@
             <!-- http://maven.apache.org/plugins/ -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -106,7 +106,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>3.0.0-M5</version>
             </plugin>
 
         </plugins>
@@ -184,7 +184,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.8</version>
+                        <version>1.6.12</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>sonatype</serverId>
